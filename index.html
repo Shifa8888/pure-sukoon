@@ -318,6 +318,217 @@
         .animate__animated { --animate-duration: 0.8s; }
         .animate__slow      { --animate-duration: 1.2s; }
 
+        /* ===== ADDICTION LOOP ANIMATION ===== */
+        .addiction-loop-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #0f172a 0%, #072a25 60%, #0d5c51 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .addiction-loop-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(20, 184, 166, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .loop-title {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.2;
+        }
+
+        .loop-title span {
+            color: var(--secondary-color);
+        }
+
+        /* Orbit Ring */
+        .orbit-wrapper {
+            position: relative;
+            width: 420px;
+            height: 420px;
+            margin: 0 auto;
+        }
+
+        .orbit-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 340px;
+            height: 340px;
+            border-radius: 50%;
+            border: 2px dashed rgba(20, 184, 166, 0.3);
+            animation: ringRotate 18s linear infinite;
+        }
+
+        @keyframes ringRotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to   { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Center brain icon */
+        .orbit-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #fff;
+            z-index: 5;
+            box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.5);
+            animation: brainPulse 2.5s ease-in-out infinite;
+        }
+
+        @keyframes brainPulse {
+            0%   { box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.5); transform: translate(-50%, -50%) scale(1); }
+            50%  { box-shadow: 0 0 0 20px rgba(20, 184, 166, 0); transform: translate(-50%, -50%) scale(1.08); }
+            100% { box-shadow: 0 0 0 0 rgba(20, 184, 166, 0); transform: translate(-50%, -50%) scale(1); }
+        }
+
+        /* Orbit Nodes */
+        .orbit-node {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            z-index: 4;
+            text-decoration: none;
+        }
+
+        .orbit-node:hover {
+            transform: scale(1.2) !important;
+        }
+
+        /* Positioned at 5 equally-spaced points on orbit ring */
+        /* Top */
+        .node-1  { top: calc(50% - 170px - 35px); left: calc(50% - 35px); background: linear-gradient(135deg, #ef4444, #b91c1c); }
+        /* Top-right */
+        .node-2  { top: calc(50% - 53px - 35px);  left: calc(50% + 145px - 35px); background: linear-gradient(135deg, #f97316, #c2410c); }
+        /* Bottom-right */
+        .node-3  { top: calc(50% + 137px - 35px); left: calc(50% + 90px - 35px); background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
+        /* Bottom-left */
+        .node-4  { top: calc(50% + 137px - 35px); left: calc(50% - 90px - 35px); background: linear-gradient(135deg, #06b6d4, #0e7490); }
+        /* Top-left */
+        .node-5  { top: calc(50% - 53px - 35px);  left: calc(50% - 145px - 35px); background: linear-gradient(135deg, #10b981, #065f46); }
+
+        .node-label {
+            font-size: 0.45rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            text-align: center;
+            margin-top: 3px;
+            line-height: 1.1;
+        }
+
+        /* Curved arrows between nodes */
+        .orbit-arrows svg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .arrow-path {
+            fill: none;
+            stroke: rgba(20, 184, 166, 0.5);
+            stroke-width: 2;
+            stroke-dasharray: 6 4;
+            animation: dashMove 2s linear infinite;
+        }
+
+        @keyframes dashMove {
+            to { stroke-dashoffset: -40; }
+        }
+
+        /* Step cards on the right */
+        .loop-step-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(20, 184, 166, 0.15);
+            border-radius: 18px;
+            padding: 18px 22px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: all 0.35s ease;
+            cursor: default;
+        }
+
+        .loop-step-card:hover {
+            background: rgba(20, 184, 166, 0.1);
+            border-color: rgba(20, 184, 166, 0.4);
+            transform: translateX(6px);
+        }
+
+        .loop-step-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .loop-break-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 14px 36px;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(20, 184, 166, 0.3);
+        }
+
+        .loop-break-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 35px rgba(20, 184, 166, 0.4);
+            color: #fff;
+        }
+
+        /* Floating particles */
+        .loop-particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.12;
+            animation: particleDrift linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes particleDrift {
+            0%   { transform: translateY(0px) translateX(0px); opacity: 0.12; }
+            50%  { opacity: 0.22; }
+            100% { transform: translateY(-80px) translateX(20px); opacity: 0; }
+        }
+
         /* --- RESPONSIVE FIXES --- */
         @media (max-width: 991px) {
             .hero-title { font-size: 2.8rem; text-align: center; }
@@ -328,6 +539,13 @@
             .bento-container { grid-template-columns: 1fr; }
             .span-2, .row-2 { grid-column: span 1; grid-row: span 1; }
             .danger-section { padding: 60px 0; border-radius: 30px 30px 0 0; }
+            .orbit-wrapper { width: 320px; height: 320px; }
+            .orbit-ring { width: 260px; height: 260px; }
+            .node-1  { top: calc(50% - 130px - 30px); left: calc(50% - 30px); width: 60px; height: 60px; }
+            .node-2  { top: calc(50% - 40px - 30px);  left: calc(50% + 110px - 30px); width: 60px; height: 60px; }
+            .node-3  { top: calc(50% + 105px - 30px); left: calc(50% + 68px - 30px); width: 60px; height: 60px; }
+            .node-4  { top: calc(50% + 105px - 30px); left: calc(50% - 68px - 30px); width: 60px; height: 60px; }
+            .node-5  { top: calc(50% - 40px - 30px);  left: calc(50% - 110px - 30px); width: 60px; height: 60px; }
         }
     </style>
 </head>
@@ -395,6 +613,158 @@
                             <p class="text-muted small mb-0">Long term guidance structures protecting and supporting your persistent sobriety goals.</p>
                         </div>
                     </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ADDICTION LOOP ANIMATION SECTION ===== -->
+    <section class="addiction-loop-section">
+
+        <!-- Floating background particles -->
+        <div class="loop-particle" style="width:180px;height:180px;background:#14b8a6;top:10%;left:5%;animation-duration:12s;animation-delay:0s;"></div>
+        <div class="loop-particle" style="width:120px;height:120px;background:#0d5c51;top:60%;right:8%;animation-duration:9s;animation-delay:3s;"></div>
+        <div class="loop-particle" style="width:80px;height:80px;background:#14b8a6;bottom:15%;left:40%;animation-duration:15s;animation-delay:1.5s;"></div>
+
+        <div class="container position-relative" style="z-index:2;">
+
+            <!-- Section Header -->
+            <div class="row justify-content-center text-center mb-5" data-animate="animate__fadeIn">
+                <div class="col-lg-7">
+                    <span class="section-tag" style="color: var(--secondary-color); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem;">
+                        • The Science of Addiction •
+                    </span>
+                    <h2 class="loop-title mt-3 mb-3">
+                        The Endless <span>Addiction Loop</span><br>You Can Break
+                    </h2>
+                    <p style="color: rgba(255,255,255,0.6); font-size: 1rem; max-width: 520px; margin: 0 auto;">
+                        Addiction is not a choice — it's a neurological cycle. Understanding it is the first step to breaking free forever.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Main Content Row -->
+            <div class="row align-items-center gy-5">
+
+                <!-- Orbit Animation -->
+                <div class="col-lg-6 d-flex justify-content-center" data-animate="animate__zoomIn">
+                    <div class="orbit-wrapper">
+
+                        <!-- Dashed rotating ring -->
+                        <div class="orbit-ring"></div>
+
+                        <!-- SVG curved arrows -->
+                        <div class="orbit-arrows">
+                            <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Arrow 1: node1 → node2 (top → top-right) -->
+                                <path class="arrow-path" d="M 210 38 Q 300 70 345 155" marker-end="url(#arrow)"/>
+                                <!-- Arrow 2: node2 → node3 (top-right → bottom-right) -->
+                                <path class="arrow-path" d="M 348 165 Q 370 280 300 348" marker-end="url(#arrow)"/>
+                                <!-- Arrow 3: node3 → node4 (bottom-right → bottom-left) -->
+                                <path class="arrow-path" d="M 285 355 Q 210 390 128 352" marker-end="url(#arrow)"/>
+                                <!-- Arrow 4: node4 → node5 (bottom-left → top-left) -->
+                                <path class="arrow-path" d="M 118 342 Q 52 270 73 162" marker-end="url(#arrow)"/>
+                                <!-- Arrow 5: node5 → node1 (top-left → top) -->
+                                <path class="arrow-path" d="M 78 150 Q 115 58 198 38" marker-end="url(#arrow)"/>
+                                <!-- Arrowhead marker -->
+                                <defs>
+                                    <marker id="arrow" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                                        <path d="M0,0 L0,6 L6,3 z" fill="rgba(20,184,166,0.7)"/>
+                                    </marker>
+                                </defs>
+                            </svg>
+                        </div>
+
+                        <!-- Center Brain Icon -->
+                        <div class="orbit-center">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+
+                        <!-- 5 Orbit Nodes -->
+                        <div class="orbit-node node-1" title="Trigger">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span class="node-label">Trigger</span>
+                        </div>
+                        <div class="orbit-node node-2" title="Craving">
+                            <i class="fa-solid fa-fire"></i>
+                            <span class="node-label">Craving</span>
+                        </div>
+                        <div class="orbit-node node-3" title="Use">
+                            <i class="fa-solid fa-capsules"></i>
+                            <span class="node-label">Use</span>
+                        </div>
+                        <div class="orbit-node node-4" title="Guilt">
+                            <i class="fa-solid fa-heart-crack"></i>
+                            <span class="node-label">Guilt</span>
+                        </div>
+                        <div class="orbit-node node-5" title="Relief">
+                            <i class="fa-solid fa-repeat"></i>
+                            <span class="node-label">Repeat</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Step Cards + CTA -->
+                <div class="col-lg-6" data-animate="animate__fadeInRight">
+                    <div class="d-flex flex-column gap-3 mb-5">
+
+                        <div class="loop-step-card">
+                            <div class="loop-step-icon" style="background:rgba(239,68,68,0.15);">
+                                <i class="fa-solid fa-bolt" style="color:#ef4444;"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1" style="color:#fff;">1. Trigger</h6>
+                                <p class="mb-0" style="color:rgba(255,255,255,0.55);font-size:0.88rem;">Stress, environment, or emotions activate the craving response in the brain.</p>
+                            </div>
+                        </div>
+
+                        <div class="loop-step-card">
+                            <div class="loop-step-icon" style="background:rgba(249,115,22,0.15);">
+                                <i class="fa-solid fa-fire" style="color:#f97316;"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1" style="color:#fff;">2. Craving</h6>
+                                <p class="mb-0" style="color:rgba(255,255,255,0.55);font-size:0.88rem;">An intense, uncontrollable urge floods the mind, making resistance feel impossible.</p>
+                            </div>
+                        </div>
+
+                        <div class="loop-step-card">
+                            <div class="loop-step-icon" style="background:rgba(139,92,246,0.15);">
+                                <i class="fa-solid fa-capsules" style="color:#8b5cf6;"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1" style="color:#fff;">3. Use</h6>
+                                <p class="mb-0" style="color:rgba(255,255,255,0.55);font-size:0.88rem;">The substance is used for temporary relief, rewiring dopamine pathways further.</p>
+                            </div>
+                        </div>
+
+                        <div class="loop-step-card">
+                            <div class="loop-step-icon" style="background:rgba(6,182,212,0.15);">
+                                <i class="fa-solid fa-heart-crack" style="color:#06b6d4;"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1" style="color:#fff;">4. Guilt & Shame</h6>
+                                <p class="mb-0" style="color:rgba(255,255,255,0.55);font-size:0.88rem;">Feelings of failure and shame emerge — which then become the next trigger.</p>
+                            </div>
+                        </div>
+
+                        <div class="loop-step-card">
+                            <div class="loop-step-icon" style="background:rgba(16,185,129,0.15);">
+                                <i class="fa-solid fa-repeat" style="color:#10b981;"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1" style="color:#fff;">5. The Loop Repeats</h6>
+                                <p class="mb-0" style="color:rgba(255,255,255,0.55);font-size:0.88rem;">Without clinical intervention, the cycle deepens — but it CAN be broken.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <a href="book.html" class="btn loop-break-btn">
+                        <i class="fa-solid fa-link-slash me-2"></i> Break the Loop — Book Now
+                    </a>
                 </div>
 
             </div>
