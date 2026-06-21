@@ -83,23 +83,29 @@
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        /* Floating Movement Classes */
-        .float-up { animation: waveUp 6s infinite ease-in-out; }
-        .float-down { animation: waveDown 6s infinite ease-in-out; }
+        /* ===== UPGRADED FLOATING ANIMATIONS ===== */
+        .float-up { animation: floatDriftUp 5s infinite ease-in-out; }
+        .float-down { animation: floatDriftDown 5s infinite ease-in-out; }
 
-        @keyframes waveUp {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
+        @keyframes floatDriftUp {
+            0%   { transform: translateY(0px) rotate(0deg); }
+            25%  { transform: translateY(-8px) rotate(0.5deg); }
+            50%  { transform: translateY(-15px) rotate(0deg); }
+            75%  { transform: translateY(-8px) rotate(-0.5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
         }
-        @keyframes waveDown {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(12px); }
+        @keyframes floatDriftDown {
+            0%   { transform: translateY(0px) rotate(0deg); }
+            25%  { transform: translateY(8px) rotate(-0.5deg); }
+            50%  { transform: translateY(15px) rotate(0deg); }
+            75%  { transform: translateY(8px) rotate(0.5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
         }
 
         .feature-box:hover {
-            transform: scale(1.03) translateY(-5px) !important;
-            box-shadow: 0 25px 50px rgba(13, 92, 81, 0.08);
-            border-color: rgba(20, 184, 166, 0.2);
+            transform: scale(1.05) translateY(-8px) rotate(1deg) !important;
+            box-shadow: 0 30px 60px rgba(13, 92, 81, 0.12);
+            border-color: rgba(20, 184, 166, 0.35);
         }
 
         .icon-circle {
@@ -228,12 +234,89 @@
             transform: rotate(45deg);
         }
 
-        /* --- SCROLL ANIMATION CONFIG --- */
-        /* اینیمیشن شروع ہونے سے پہلے ایلیمنٹس کو چھپانے کے لیے */
+        /* ===== SCROLL ANIMATION CONFIG ===== */
         [data-animate] {
             opacity: 0;
             visibility: hidden;
+            will-change: transform, opacity;
         }
+
+        /* ===== PAGE LOAD FADE-IN ===== */
+        body {
+            animation: pageFadeIn 0.6s ease forwards;
+        }
+        @keyframes pageFadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== ICON PULSE ===== */
+        .icon-circle {
+            transition: all 0.4s ease;
+        }
+        .feature-box:hover .icon-circle {
+            transform: scale(1.2) rotate(-8deg);
+            background: rgba(13, 92, 81, 0.15);
+        }
+
+        /* ===== BENTO CARD UPGRADED HOVER ===== */
+        .bento-card:hover {
+            transform: scale(1.03) translateY(-10px) rotate(0.5deg);
+            background: var(--card-gradient-2);
+            border-color: rgba(20, 184, 166, 0.4);
+            box-shadow: 0 30px 65px rgba(13, 92, 81, 0.1);
+        }
+
+        /* ===== PILLAR CARD HOVER ===== */
+        .pillar-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(13, 92, 81, 0.08) !important;
+        }
+
+        /* ===== STEP NUMBER PULSE ===== */
+        @keyframes stepPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(13, 92, 81, 0.3); }
+            50%       { transform: scale(1.08); box-shadow: 0 0 0 8px rgba(13, 92, 81, 0); }
+        }
+        .step-num-icon {
+            animation: stepPulse 3s infinite ease-in-out;
+        }
+
+        /* ===== MODALITY BOX HOVER ===== */
+        .modality-box:hover {
+            transform: translateY(-8px) scale(1.02) !important;
+            box-shadow: 0 25px 50px rgba(13, 92, 81, 0.08) !important;
+            border-color: rgba(20, 184, 166, 0.15) !important;
+        }
+        .modality-box:hover .modality-icon-circle {
+            transform: rotate(15deg) scale(1.15);
+            transition: transform 0.4s ease;
+        }
+
+        /* ===== BRAND CARD HOVER ===== */
+        .brand-card {
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .brand-card:hover {
+            transform: translateY(-6px) scale(1.04);
+            box-shadow: 0 20px 40px rgba(13, 92, 81, 0.07) !important;
+        }
+        .brand-card:hover .grayscale-img {
+            filter: grayscale(0) opacity(1) !important;
+        }
+
+        /* ===== TESTIMONIAL CARD ===== */
+        .testimonial-wrapper {
+            transition: all 0.4s ease;
+        }
+        .testimonial-wrapper:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(13, 92, 81, 0.06) !important;
+        }
+
+        /* ===== ANIMATE.CSS DURATION OVERRIDES ===== */
+        .animate__animated { --animate-duration: 0.8s; }
+        .animate__slow      { --animate-duration: 1.2s; }
 
         /* --- RESPONSIVE FIXES --- */
         @media (max-width: 991px) {
@@ -249,7 +332,7 @@
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light fixed-top py-0 shadow-sm animate__animated animate__fadeInDown" style="height: 80px;"> <div class="container position-relative d-flex align-items-center" style="height: 100%;">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-0 shadow-sm animate__animated animate__slideInDown" style="height: 80px;"> <div class="container position-relative d-flex align-items-center" style="height: 100%;">
         
         <a class="navbar-brand py-0 position-absolute" href="#" style="top: 50%; transform: translateY(-50%); z-index: 1030;">
             <img src="./images/logo (2).png" alt="Sakoon Logo" style="height: 120px; width: auto;">
@@ -273,7 +356,7 @@
         <div class="container">
             <div class="row align-items-center gy-5">
                 
-                <div class="col-lg-5 animate__animated animate__fadeInLeft">
+                <div class="col-lg-5 animate__animated animate__jackInTheBox">
                     <span class="px-3 py-1 bg-white border rounded-pill text-dark fw-bold shadow-sm small mb-3 d-inline-block">
                         <i class="fa-solid fa-star text-warning me-1"></i> Premium Mental Healthcare
                     </span>
@@ -330,7 +413,7 @@
 
             <div class="bento-container">
                 
-                <div class="bento-card span-2 row-2" data-animate="animate__fadeInUp">
+                <div class="bento-card span-2 row-2" data-animate="animate__zoomIn">
                     <div class="bento-img-bg" style="background-image: url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=80');"></div>
                     <div class="bento-arrow-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
                     <div class="bento-content">
@@ -401,7 +484,7 @@
             <div class="col-lg-8">
                 <div class="row g-4">
                     
-                    <div class="col-md-6" data-animate="animate__fadeInUp">
+                    <div class="col-md-6" data-animate="animate__flipInX">
                         <div class="pillar-card p-4 border-0 shadow-sm" style="background: var(--soft-sage); border-radius: 24px; transition: all 0.3s ease;">
                             <div class="pillar-number mb-3" style="font-size: 2.5rem; font-weight: 800; color: rgba(13, 92, 81, 0.15);">01</div>
                             <h5 class="fw-bold mb-2" style="color: var(--dark-slate);">Evidence-Based Care</h5>
@@ -409,7 +492,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6" data-animate="animate__fadeInUp" style="animation-delay: 0.2s;">
+                    <div class="col-md-6" data-animate="animate__flipInX" style="animation-delay: 0.2s;">
                         <div class="pillar-card p-4 border-0 shadow-sm" style="background: #ffffff; border: 1px solid rgba(13, 92, 81, 0.08) !important; border-radius: 24px; transition: all 0.3s ease;">
                             <div class="pillar-number mb-3" style="font-size: 2.5rem; font-weight: 800; color: rgba(20, 184, 166, 0.2);">02</div>
                             <h5 class="fw-bold mb-2" style="color: var(--dark-slate);">100% Confidentiality</h5>
@@ -417,7 +500,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6" data-animate="animate__fadeInUp" style="animation-delay: 0.4s;">
+                    <div class="col-md-6" data-animate="animate__flipInX" style="animation-delay: 0.4s;">
                         <div class="pillar-card p-4 border-0 shadow-sm" style="background: #ffffff; border: 1px solid rgba(13, 92, 81, 0.08) !important; border-radius: 24px; transition: all 0.3s ease;">
                             <div class="pillar-number mb-3" style="font-size: 2.5rem; font-weight: 800; color: rgba(20, 184, 166, 0.2);">03</div>
                             <h5 class="fw-bold mb-2" style="color: var(--dark-slate);">Luxury Environment</h5>
@@ -425,7 +508,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6" data-animate="animate__fadeInUp" style="animation-delay: 0.6s;">
+                    <div class="col-md-6" data-animate="animate__flipInX" style="animation-delay: 0.6s;">
                         <div class="pillar-card p-4 border-0 shadow-sm" style="background: var(--soft-sage); border-radius: 24px; transition: all 0.3s ease;">
                             <div class="pillar-number mb-3" style="font-size: 2.5rem; font-weight: 800; color: rgba(13, 92, 81, 0.15);">04</div>
                             <h5 class="fw-bold mb-2" style="color: var(--dark-slate);">Expert Clinicians</h5>
@@ -442,7 +525,7 @@
     <div class="container">
         <div class="row align-items-center gy-5">
             
-            <div class="col-lg-6" data-animate="animate__fadeInLeft">
+            <div class="col-lg-6" data-animate="animate__zoomIn">
                 <div class="video-wrapper position-relative p-2 shadow-lg" style="background: #ffffff; border-radius: 32px; border: 1px solid rgba(13, 92, 81, 0.08);">
                     <div class="ratio ratio-16x9 overflow-hidden" style="border-radius: 24px;">
                         <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Sakoon Rehabilitation Overview" allowfullscreen></iframe>
@@ -450,7 +533,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-6" data-animate="animate__fadeInRight">
+            <div class="col-lg-6" data-animate="animate__lightSpeedInRight">
                 <div class="ps-lg-4">
                     <span class="section-tag" style="color: var(--secondary-color); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem; d-block; margin-bottom: 10px;">
                         • The Process •
@@ -600,7 +683,7 @@
 
         <div class="row g-4 justify-content-center">
             
-            <div class="col-lg-4 col-md-6" data-animate="animate__fadeInUp">
+            <div class="col-lg-4 col-md-6" data-animate="animate__zoomIn">
                 <div class="modality-box p-4 text-center shadow-sm h-100" style="background: #ffffff; border-radius: 28px; border: 1px solid rgba(13, 92, 81, 0.04); transition: all 0.3s ease;">
                     <div class="modality-icon-circle mx-auto mb-4 d-flex align-items-center justify-content-center" style="width: 70px; height: 70px; background: var(--soft-sage); color: var(--primary-color); border-radius: 50%; font-size: 1.5rem;">
                         <i class="fa-solid fa-brain"></i>
@@ -614,7 +697,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-4 col-md-6" data-animate="animate__fadeInUp" style="animation-delay: 0.2s;">
+            <div class="col-lg-4 col-md-6" data-animate="animate__zoomIn" style="animation-delay: 0.2s;">
                 <div class="modality-box p-4 text-center shadow-sm h-100" style="background: #ffffff; border-radius: 28px; border: 1px solid rgba(13, 92, 81, 0.04); transition: all 0.3s ease;">
                     <div class="modality-icon-circle mx-auto mb-4 d-flex align-items-center justify-content-center" style="width: 70px; height: 70px; background: rgba(20, 184, 166, 0.08); color: var(--secondary-color); border-radius: 50%; font-size: 1.5rem;">
                         <i class="fa-solid fa-notes-medical"></i>
@@ -628,7 +711,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-4 col-md-6" data-animate="animate__fadeInUp" style="animation-delay: 0.4s;">
+            <div class="col-lg-4 col-md-6" data-animate="animate__zoomIn" style="animation-delay: 0.4s;">
                 <div class="modality-box p-4 text-center shadow-sm h-100" style="background: #ffffff; border-radius: 28px; border: 1px solid rgba(13, 92, 81, 0.04); transition: all 0.3s ease;">
                     <div class="modality-icon-circle mx-auto mb-4 d-flex align-items-center justify-content-center" style="width: 70px; height: 70px; background: var(--soft-sage); color: var(--primary-color); border-radius: 50%; font-size: 1.5rem;">
                         <i class="fa-solid fa-heart-pulse"></i>
@@ -648,7 +731,7 @@
     <div class="container">
         <div class="row align-items-center g-5">
             
-            <div class="col-lg-6" data-animate="animate__fadeInLeft">
+            <div class="col-lg-6" data-animate="animate__rotateIn">
                 <div class="row g-3">
                     <div class="col-6">
                         <div class="brand-card p-4 text-center shadow-sm" style="background: var(--soft-sage); border-radius: 24px; min-height: 160px; d-flex; align-items: center; justify-content: center;">
@@ -673,7 +756,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-6" data-animate="animate__fadeInRight">
+            <div class="col-lg-6" data-animate="animate__lightSpeedInRight">
                 <div class="ps-lg-4">
                     <span class="section-tag" style="color: var(--secondary-color); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem;">
                         • Trusted Standards •
@@ -729,7 +812,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-5" data-animate="animate__fadeInRight">
+            <div class="col-lg-5" data-animate="animate__bounceIn">
                 <div class="ceo-image-wrapper position-relative mx-auto" style="max-width: 400px;">
                     <div class="geo-frame position-absolute" style="top: 20px; right: -20px; width: 100%; height: 100%; border: 2px solid var(--secondary-color); border-radius: 32px; z-index: 1;"></div>
                     
@@ -849,22 +932,25 @@
             const animatedElements = document.querySelectorAll('[data-animate]');
 
             const observerOptions = {
-                root: null, // پورٹ ویو کے مطابق کام کرے گا
-                rootMargin: '0px',
-                threshold: 0.15 // جب کارڈ 15% نظر آئے گا، تب اینیمیشن چلے گی
+                root: null,
+                rootMargin: '0px 0px -60px 0px',
+                threshold: 0.12
             };
 
             const observer = new IntersectionObserver((entries, observer) => {
+                let delay = 0;
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const element = entry.target;
                         const animationClass = element.getAttribute('data-animate');
-                        
-                        // اینیمیشن کلاسز اپلائی کریں
-                        element.style.visibility = 'visible';
-                        element.classList.add('animate__animated', animationClass);
-                        
-                        // جب ایک بار اینیمیشن چل جائے، تو ٹریک کرنا بند کر دیں
+                        const existingDelay = parseFloat(element.style.animationDelay) || 0;
+
+                        setTimeout(() => {
+                            element.style.visibility = 'visible';
+                            element.style.opacity   = '1';
+                            element.classList.add('animate__animated', animationClass);
+                        }, (existingDelay * 1000));
+
                         observer.unobserve(element);
                     }
                 });

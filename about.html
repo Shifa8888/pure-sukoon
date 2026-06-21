@@ -83,23 +83,29 @@
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        /* Floating Movement Classes */
-        .float-up { animation: waveUp 6s infinite ease-in-out; }
-        .float-down { animation: waveDown 6s infinite ease-in-out; }
+        /* ===== UPGRADED FLOATING ANIMATIONS ===== */
+        .float-up { animation: floatDriftUp 5s infinite ease-in-out; }
+        .float-down { animation: floatDriftDown 5s infinite ease-in-out; }
 
-        @keyframes waveUp {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
+        @keyframes floatDriftUp {
+            0%   { transform: translateY(0px) rotate(0deg); }
+            25%  { transform: translateY(-8px) rotate(0.5deg); }
+            50%  { transform: translateY(-15px) rotate(0deg); }
+            75%  { transform: translateY(-8px) rotate(-0.5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
         }
-        @keyframes waveDown {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(12px); }
+        @keyframes floatDriftDown {
+            0%   { transform: translateY(0px) rotate(0deg); }
+            25%  { transform: translateY(8px) rotate(-0.5deg); }
+            50%  { transform: translateY(15px) rotate(0deg); }
+            75%  { transform: translateY(8px) rotate(0.5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
         }
 
         .feature-box:hover {
-            transform: scale(1.03) translateY(-5px) !important;
-            box-shadow: 0 25px 50px rgba(13, 92, 81, 0.08);
-            border-color: rgba(20, 184, 166, 0.2);
+            transform: scale(1.05) translateY(-8px) rotate(1deg) !important;
+            box-shadow: 0 30px 60px rgba(13, 92, 81, 0.12);
+            border-color: rgba(20, 184, 166, 0.35);
         }
 
         .icon-circle {
@@ -235,6 +241,48 @@
             will-change: transform, opacity;
         }
 
+        /* ===== PAGE LOAD FADE-IN ===== */
+        body { animation: pageFadeIn 0.6s ease forwards; }
+        @keyframes pageFadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== BENTO CARD UPGRADED HOVER ===== */
+        .bento-card:hover {
+            transform: scale(1.03) translateY(-10px) rotate(0.5deg);
+            background: var(--card-gradient-2);
+            border-color: rgba(20, 184, 166, 0.4);
+            box-shadow: 0 30px 65px rgba(13, 92, 81, 0.1);
+        }
+
+        /* ===== PILLAR CARD HOVER ===== */
+        .pillar-card {
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+        }
+        .pillar-card:hover {
+            transform: translateY(-8px) scale(1.03) !important;
+            box-shadow: 0 25px 45px rgba(13, 92, 81, 0.1) !important;
+        }
+
+        /* ===== ABOUT IMAGE FRAME HOVER ===== */
+        .about-image-frame:hover .frame-image-holder {
+            transform: translateY(-6px);
+            transition: transform 0.4s ease;
+        }
+
+        /* ===== QUOTE BOX HOVER ===== */
+        .quote-accent-box {
+            transition: all 0.3s ease;
+        }
+        .quote-accent-box:hover {
+            transform: translateX(6px);
+            box-shadow: 0 8px 24px rgba(20, 184, 166, 0.1) !important;
+        }
+
+        /* ===== ANIMATE.CSS OVERRIDES ===== */
+        .animate__animated { --animate-duration: 0.85s; }
+
         /* --- RESPONSIVE FIXES --- */
         @media (max-width: 991px) {
             .hero-title { font-size: 2.8rem; text-align: center; }
@@ -250,7 +298,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light fixed-top py-0 shadow-sm animate__animated animate__fadeInDown" style="height: 80px;"> <div class="container position-relative d-flex align-items-center" style="height: 100%;">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-0 shadow-sm animate__animated animate__slideInDown" style="height: 80px;"> <div class="container position-relative d-flex align-items-center" style="height: 100%;">
         
         <a class="navbar-brand py-0 position-absolute" href="#" style="top: 50%; transform: translateY(-50%); z-index: 1030;">
             <img src="./images/logo (2).png" alt="Sakoon Logo" style="height: 120px; width: auto;">
@@ -272,7 +320,7 @@
     </div>
 </nav>
     <section class="about-hero-section text-center text-white d-flex align-items-center justify-content-center position-relative" style="background: linear-gradient(rgba(7, 42, 37, 0.9), rgba(13, 92, 81, 0.95)), url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1920&q=80') no-repeat center center; background-size: cover; padding: 120px 0 100px 0; border-bottom: 6px solid #14b8a6;">
-        <div class="container" data-animate="animate__fadeInUp">
+        <div class="container" data-animate="animate__zoomIn">
             <span class="badge rounded-pill px-3 py-2 mb-3" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #14b8a6; font-weight: 600; letter-spacing: 2px; font-size: 0.85rem;">OUR JOURNEY</span>
             <h1 class="display-3 fw-bold mb-3 text-white" style="font-family: 'Poppins', sans-serif;">Why We Started</h1>
             <p class="fs-5 text-white-50 mx-auto" style="max-width: 600px; font-size: 1.1rem; line-height: 1.6;">From a frustration to a revolution. Rebuilding lives with unmatched compassion, empathy, and absolute scientific care.</p>
@@ -283,7 +331,7 @@
         <div class="container">
             <div class="row g-5 align-items-center">
                 
-                <div class="col-lg-5" data-animate="animate__fadeInLeft">
+                <div class="col-lg-5" data-animate="animate__bounceIn">
                     <div class="about-image-frame position-relative mx-auto" style="max-width: 420px;">
                         <div class="frame-backdrop position-absolute" style="top: -15px; left: -15px; width: 100%; height: 100%; background: #e6f2f0; border-radius: 32px; z-index: 1;"></div>
                         <div class="frame-image-holder position-relative overflow-hidden shadow-lg" style="border-radius: 32px; z-index: 2; background: #ffffff; border: 6px solid #ffffff;">
@@ -292,7 +340,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-7" data-animate="animate__fadeInRight">
+                <div class="col-lg-7" data-animate="animate__lightSpeedInRight">
                     <span class="text-uppercase tracking-wider fw-bold small d-block mb-2" style="letter-spacing: 1.5px; color: #0d5c51 !important; font-size: 0.85rem;">• More Than Just Treatment •</span>
                     <h2 class="display-5 fw-bold text-dark mb-4" style="line-height: 1.2; font-family: 'Poppins', sans-serif;">Our Sacred Vision & <br><span style="color: #0d5c51;">Foundational Roots</span></h2>
                     
@@ -341,7 +389,7 @@
                 <div class="col-lg-6">
                     <div class="d-flex flex-column gap-3">
                         
-                        <div class="pillar-card p-4 d-flex gap-4 bg-white shadow-sm" style="border-radius: 24px; border: 1px solid rgba(13, 92, 81, 0.06); transition: all 0.3s ease;" data-animate="animate__fadeInRight">
+                        <div class="pillar-card p-4 d-flex gap-4 bg-white shadow-sm" style="border-radius: 24px; border: 1px solid rgba(13, 92, 81, 0.06); transition: all 0.3s ease;" data-animate="animate__flipInX">
                             <div class="text-center rounded-circle d-flex align-items-center justify-content-center" style="width: 56px; height: 56px; background: #e6f2f0; color: #0d5c51; font-size: 1.25rem; flex-shrink: 0;">
                                 <i class="fa-solid fa-hand-holding-heart"></i>
                             </div>
@@ -351,7 +399,7 @@
                             </div>
                         </div>
 
-                        <div class="pillar-card p-4 d-flex gap-4 bg-white shadow-sm" style="border-radius: 24px; border: 1px solid rgba(13, 92, 81, 0.06); transition: all 0.3s ease;" data-animate="animate__fadeInRight">
+                        <div class="pillar-card p-4 d-flex gap-4 bg-white shadow-sm" style="border-radius: 24px; border: 1px solid rgba(13, 92, 81, 0.06); transition: all 0.3s ease;" data-animate="animate__flipInX">
                             <div class="text-center rounded-circle d-flex align-items-center justify-content-center" style="width: 56px; height: 56px; background: rgba(20, 184, 166, 0.08); color: #14b8a6; font-size: 1.25rem; flex-shrink: 0;">
                                 <i class="fa-solid fa-seedling"></i>
                             </div>
@@ -361,7 +409,7 @@
                             </div>
                         </div>
 
-                        <div class="pillar-card p-4 d-flex gap-4 bg-white shadow-sm" style="border-radius: 24px; border: 1px solid rgba(13, 92, 81, 0.06); transition: all 0.3s ease;" data-animate="animate__fadeInRight">
+                        <div class="pillar-card p-4 d-flex gap-4 bg-white shadow-sm" style="border-radius: 24px; border: 1px solid rgba(13, 92, 81, 0.06); transition: all 0.3s ease;" data-animate="animate__flipInX">
                             <div class="text-center rounded-circle d-flex align-items-center justify-content-center" style="width: 56px; height: 56px; background: #e6f2f0; color: #0d5c51; font-size: 1.25rem; flex-shrink: 0;">
                                 <i class="fa-solid fa-infinity"></i>
                             </div>
@@ -379,14 +427,14 @@
     </section>
 <section class="faq-section py-5" style="background-color: #ffffff; padding: 100px 0 !important;">
     <div class="container">
-        <div class="text-center mb-5" data-animate="animate__fadeInUp">
+        <div class="text-center mb-5" data-animate="animate__zoomIn">
             <span class="text-uppercase tracking-wider fw-bold small d-block mb-2" style="letter-spacing: 1.5px; color: #14b8a6; font-size: 0.85rem;">• Have Questions? •</span>
             <h3 class="display-6 fw-bold text-dark" style="font-family: 'Poppins', sans-serif;">Frequently Asked Questions</h3>
             <p class="text-muted mx-auto mt-2" style="max-width: 500px;">We understand you might have doubts. Here are the answers to some common queries.</p>
         </div>
 
         <div class="row justify-content-center">
-            <div class="col-lg-8" data-animate="animate__fadeInUp">
+            <div class="col-lg-8" data-animate="animate__flipInX">
                 <div class="accordion" id="sakoonFaqAccordion">
                     
                     <div class="accordion-item mb-3" style="border: 1px solid rgba(13, 92, 81, 0.08); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.01);">
@@ -555,8 +603,8 @@
 
             const observerOptions = {
                 root: null,
-                rootMargin: '0px',
-                threshold: 0.15
+                rootMargin: '0px 0px -60px 0px',
+                threshold: 0.12
             };
 
             const observer = new IntersectionObserver((entries, observer) => {
@@ -564,10 +612,14 @@
                     if (entry.isIntersecting) {
                         const element = entry.target;
                         const animationClass = element.getAttribute('data-animate');
-                        
-                        element.style.visibility = 'visible';
-                        element.classList.add('animate__animated', animationClass);
-                        
+                        const existingDelay = parseFloat(element.style.animationDelay) || 0;
+
+                        setTimeout(() => {
+                            element.style.visibility = 'visible';
+                            element.style.opacity   = '1';
+                            element.classList.add('animate__animated', animationClass);
+                        }, existingDelay * 1000);
+
                         observer.unobserve(element);
                     }
                 });
