@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakoon Rehabilitation | Dynamic Premium Experience</title>
+    <link rel="icon" type="image/png" href="./images/logo (2).png">
+    <link rel="shortcut icon" type="image/png" href="./images/logo (2).png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <style>
+        :root {
+            --primary-color: #0d5c51;
+            --secondary-color: #14b8a6;
+            --dark-slate: #0f172a;
+            --light-cream: #f7faf9;
+            --soft-sage: #eef7f5;
+            --card-gradient-1: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 250, 248, 0.9) 100%);
+            --card-gradient-2: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(230, 244, 241, 0.95) 100%);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+            background-color: var(--light-cream);
+            overflow-x: hidden;
+        }
+
+        /* --- NAVBAR STYLING --- */
+        .navbar {
+            background: rgba(255, 255, 255, 0.85) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(13, 92, 81, 0.06);
+        }
+
+        .btn-custom {
+            background: linear-gradient(135deg, var(--primary-color), #09443c);
+            color: white;
+            border-radius: 12px;
+            padding: 12px 28px;
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(13, 92, 81, 0.2);
+        }
+
+        /* --- SECTION 1: HERO GRID LAYOUT --- */
+        .hero-section {
+            padding-top: 160px;
+            padding-bottom: 100px;
+            background: radial-gradient(circle at 90% 10%, rgba(20, 184, 166, 0.08), transparent 45%);
+        }
+
+        .hero-title {
+            font-size: 3.8rem;
+            font-weight: 800;
+            color: var(--dark-slate);
+            line-height: 1.15;
+        }
+
+        .hero-title span {
+            color: var(--primary-color);
+        }
+
+        .grid-display {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .feature-box {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 25px;
+            box-shadow: 0 15px 35px rgba(15, 23, 42, 0.02);
+            border: 1px solid rgba(13, 92, 81, 0.03);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        /* Floating Movement Classes */
+        .float-up { animation: waveUp 6s infinite ease-in-out; }
+        .float-down { animation: waveDown 6s infinite ease-in-out; }
+
+        @keyframes waveUp {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        @keyframes waveDown {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(12px); }
+        }
+
+        .feature-box:hover {
+            transform: scale(1.03) translateY(-5px) !important;
+            box-shadow: 0 25px 50px rgba(13, 92, 81, 0.08);
+            border-color: rgba(20, 184, 166, 0.2);
+        }
+
+        .icon-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            background: rgba(20, 184, 166, 0.1);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        /* --- SECTION 2: DANGER BENTO SECTION --- */
+        .danger-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, var(--light-cream) 0%, var(--soft-sage) 100%);
+            color: var(--dark-slate);
+            border-radius: 50px 50px 0 0;
+            position: relative;
+            border-top: 1px solid rgba(13, 92, 81, 0.05);
+        }
+
+        .section-tag {
+            color: var(--primary-color);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        /* Bento Grid Layout Configuration */
+        .bento-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 25px;
+            margin-top: 50px;
+        }
+
+        .bento-card {
+            position: relative;
+            background: var(--card-gradient-1);
+            border-radius: 28px;
+            min-height: 260px;
+            overflow: hidden;
+            border: 1px solid rgba(13, 92, 81, 0.06);
+            box-shadow: 0 10px 30px rgba(13, 92, 81, 0.02);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 35px;
+        }
+
+        /* Image Masking Layer - Fixed Visibility */
+        .bento-img-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.4;
+            mix-blend-mode: multiply;
+            transition: all 0.6s ease;
+            z-index: 1;
+        }
+
+        /* Spanning grid modifications for asymmetry */
+        .span-2 { grid-column: span 2; }
+        .row-2 { grid-row: span 2; }
+
+        .bento-content {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 16px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Interactive Dynamic Animations on Hover */
+        .bento-card:hover {
+            transform: scale(1.02) translateY(-8px);
+            background: var(--card-gradient-2);
+            border-color: rgba(20, 184, 166, 0.3);
+            box-shadow: 0 25px 55px rgba(13, 92, 81, 0.08);
+        }
+
+        .bento-card:hover .bento-img-bg {
+            opacity: 0.6;
+            transform: scale(1.08) rotate(1deg);
+        }
+
+        .badge-danger-soft {
+            background-color: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+            font-weight: 700;
+            border: 1px solid rgba(220, 53, 69, 0.2);
+        }
+
+        /* Dynamic icon transition effect inside cards */
+        .bento-arrow-icon {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            z-index: 2;
+            transition: all 0.4s ease;
+        }
+
+        .bento-card:hover .bento-arrow-icon {
+            background: var(--primary-color);
+            color: #ffffff;
+            transform: rotate(45deg);
+        }
+
+        /* --- SCROLL ANIMATION CONFIG --- */
+        /* اینیمیشن شروع ہونے سے پہلے ایلیمنٹس کو چھپانے کے لیے */
+        [data-animate] {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* --- RESPONSIVE FIXES --- */
+        @media (max-width: 991px) {
+            .hero-title { font-size: 2.8rem; text-align: center; }
+            .hero-section p { text-align: center; }
+            .hero-section .d-flex { justify-content: center; }
+            .grid-display { grid-template-columns: 1fr; }
+            .float-up, .float-down { animation: none; }
+            .bento-container { grid-template-columns: 1fr; }
+            .span-2, .row-2 { grid-column: span 1; grid-row: span 1; }
+            .danger-section { padding: 60px 0; border-radius: 30px 30px 0 0; }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-0 shadow-sm animate__animated animate__fadeInDown" style="height: 80px;"> <div class="container position-relative d-flex align-items-center" style="height: 100%;">
+        
+        <a class="navbar-brand py-0 position-absolute" href="#" style="top: 50%; transform: translateY(-50%); z-index: 1030;">
+            <img src="./images/logo (2).png" alt="Sakoon Logo" style="height: 120px; width: auto;">
+        </a>
+        
+        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav align-items-center gap-2 py-2">
+                <li class="nav-item"><a class="nav-link fw-semibold px-3" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link fw-semibold px-3" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link fw-semibold px-3" href="services.html">Services</a></li>
+                <li class="nav-item"><a class="nav-link fw-semibold px-3" href="team.html">Team</a></li>
+                <li class="nav-item"><a class="btn btn-custom ms-lg-2" href="book.html">Book Appointment</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>  <section class="hero-section min-vh-100 d-flex align-items-center">
+        <div class="container">
+            <div class="row align-items-center gy-5">
+                
+                <div class="col-lg-5 animate__animated animate__fadeInLeft">
+                    <span class="px-3 py-1 bg-white border rounded-pill text-dark fw-bold shadow-sm small mb-3 d-inline-block">
+                        <i class="fa-solid fa-star text-warning me-1"></i> Premium Mental Healthcare
+                    </span>
+                    <h1 class="hero-title mb-4">
+                        A Journey to <br><span>Peace & Recovery</span> Starts Here
+                    </h1>
+                    <p class="text-muted fs-5 mb-5 lead">
+                        We provide world-class addiction treatment and psychiatric care in a safe, supportive environment. Reclaim your life with our expert team.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#" class="btn btn-custom btn-lg px-4 fs-6"><i class="fa-solid fa-circle-chevron-right me-2"></i>Get Immediate Help</a>
+                        <a href="#" class="btn btn-outline-dark btn-lg px-4 fs-6 rounded-pill"><i class="fa-solid fa-play me-2"></i>Watch Recovery Stories</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="grid-display">
+                        <div class="feature-box float-up">
+                            <div class="icon-circle"><i class="fa-solid fa-brain"></i></div>
+                            <h5 class="fw-bold text-dark mb-2">Psychiatry</h5>
+                            <p class="text-muted small mb-0">Professional medical mind care setups built to realign biological tracking parameters.</p>
+                        </div>
+                        <div class="feature-box float-down" style="animation-delay: 0.5s;">
+                            <div class="icon-circle"><i class="fa-solid fa-vial-medical"></i></div>
+                            <h5 class="fw-bold text-dark mb-2">Detoxification</h5>
+                            <p class="text-muted small mb-0">Safe medical interventions managing withdrawal symptoms step by step securely.</p>
+                        </div>
+                        <div class="feature-box float-up" style="animation-delay: 1s;">
+                            <div class="icon-circle"><i class="fa-solid fa-comments"></i></div>
+                            <h5 class="fw-bold text-dark mb-2">Therapy Sessions</h5>
+                            <p class="text-muted small mb-0">1-on-1 private recovery guidance to identify root underlying cognitive stressors.</p>
+                        </div>
+                        <div class="feature-box float-down" style="animation-delay: 1.5s;">
+                            <div class="icon-circle"><i class="fa-solid fa-house-medical-circle-check"></i></div>
+                            <h5 class="fw-bold text-dark mb-2">Aftercare Support</h5>
+                            <p class="text-muted small mb-0">Long term guidance structures protecting and supporting your persistent sobriety goals.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="danger-section">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-6" data-animate="animate__fadeIn">
+                    <span class="section-tag">• The Clinical Reality •</span>
+                    <h2 class="display-6 fw-bold mt-2" style="color: var(--dark-slate);">Know The Critical Danger</h2>
+                    <p class="text-muted mt-2">Different dependency categories trigger specific destructive neuro-biological impacts on health profiles.</p>
+                </div>
+            </div>
+
+            <div class="bento-container">
+                
+                <div class="bento-card span-2 row-2" data-animate="animate__fadeInUp">
+                    <div class="bento-img-bg" style="background-image: url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="bento-arrow-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                    <div class="bento-content">
+                        <span class="badge badge-danger-soft mb-3 px-3 py-2">Threat Level: Severe</span>
+                        <h3 class="fw-bold" style="color: var(--dark-slate);">Alcohol Dependence</h3>
+                        <p class="text-secondary mb-0">Triggers accelerated liver cirrhosis structures, persistent frontal lobe brain damage configurations, and severe life-threatening biological withdrawal tracks.</p>
+                    </div>
+                </div>
+
+                <div class="bento-card" data-animate="animate__fadeInUp">
+                    <div class="bento-img-bg" style="background-image: url('https://images.unsplash.com/photo-1603909223429-69bb7101f420?auto=format&fit=crop&w=400&q=80');"></div>
+                    <div class="bento-arrow-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                    <div class="bento-content">
+                        <h4 class="fw-bold" style="color: var(--dark-slate);">Cannabis Overuse</h4>
+                        <p class="small mb-0 text-secondary">Induces psychological delays and systematic short-term focus degradation loops.</p>
+                    </div>
+                </div>
+
+                <div class="bento-card" data-animate="animate__fadeInUp">
+                    <div class="bento-img-bg" style="background-image: url('https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=80');"></div>
+                    <div class="bento-arrow-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                    <div class="bento-content">
+                        <h4 class="fw-bold" style="color: var(--dark-slate);">Opioid Crisis</h4>
+                        <p class="small mb-0 text-secondary">Triggers intense central nervous system down-regulation and high breathing risks.</p>
+                    </div>
+                </div>
+
+                <div class="bento-card span-2" data-animate="animate__fadeInUp">
+                    <div class="bento-img-bg" style="background-image: url('https://images.unsplash.com/photo-1508847154043-be12a62861c1?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="bento-arrow-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                    <div class="bento-content">
+                        <h4 class="fw-bold" style="color: var(--dark-slate);">Cocaine Stimulants</h4>
+                        <p class="mb-0 text-secondary">Creates fatal cardiovascular hypertension episodes alongside extreme clinical psychological paranoia fluctuations.</p>
+                    </div>
+                </div>
+
+                <div class="bento-card" data-animate="animate__fadeInUp">
+                    <div class="bento-img-bg" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=80');"></div>
+                    <div class="bento-arrow-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                    <div class="bento-content">
+                        <h4 class="fw-bold" style="color: var(--dark-slate);">Designer Drugs</h4>
+                        <p class="small mb-0 text-secondary">Unpredictable substance toxins that disrupt biological cell setups immediately.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+<section class="pillars-section py-5" style="background-color: #ffffff; padding: 100px 0 !important;">
+    <div class="container">
+        <div class="row align-items-center gy-5">
+            
+            <div class="col-lg-4" data-animate="animate__fadeInLeft">
+                <span class="section-tag" style="color: var(--secondary-color); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem;">
+                    • Why Sakoon •
+                </span>
+                <h2 class="display-5 fw-bold mt-2 mb-4" style="color: var(--dark-slate); line-height: 1.2;">
+                    Our Pillars of <br><span style="color: var(--primary-color);">True Healing</span>
+                </h2>
+                <p class="text-muted fs-6 mb-4">
+                    We don't just treat symptoms; we reshape lifestyle patterns through scientific methods and empathetic care setup structures.
+                </p>
+                <div class="d-none d-lg-block">
+                    <hr style="width: 50px; border: 2px solid var(--primary-color); opacity: 1;">
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="row g-4">
+                    
+                    <div class="col-md-6" data-animate="animate__fadeInUp">
+                        <div class="pillar-card p-4 border-0 shadow-sm" style="background: var(--soft-sage); border-radius: 24px; transition: all 0.3s ease;">
+                            <div class="pillar-number mb-3" style="font-size: 2.5rem; font-weight: 800; color: rgba(13, 92, 81, 0.15);">01</div>
+                            <h5 class="fw-bold mb-2" style="color: var(--dark-slate);">Evidence-Based Care</h5>
+                            <p class="text-muted small mb-0">Utilizing globally recognized clinical treatments modified precisely for unique recovery paces.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6" data-animate="animate__fadeInUp" style="animation-delay: 0.2s;">
+                        <div class="pillar-card p-4 border-0 shadow-sm" style="background: #ffffff; border: 1px solid rgba(13, 92, 81, 0.08) !important; border-radius: 24px; transition: all 0.3s ease;">
+                            <div class="pillar-number mb-3" style="font-size: 2.5rem; font-weight: 800; color: rgba(20, 184, 166, 0.2);">02</div>
+                            <h5 class="fw-bold mb-2" style="color: var(--dark-slate);">100% Confidentiality</h5>
+                            <p class="text-muted small mb-0">Your privacy is our utmost priority. Safe medical tracking systems protected by extreme ethical layers.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6" data-animate="animate__fadeInUp" style="animation-delay: 0.4s;">
+                        <div class="pillar-card p-4 border-0 shadow-sm" style="background: #ffffff; border: 1px solid rgba(13, 92, 81, 0.08) !important; border-radius: 24px; transition: all 0.3s ease;">
+                            <div class="pillar-number mb-3" style="font-size: 2.5rem; font-weight: 800; color: rgba(20, 184, 166, 0.2);">03</div>
+                            <h5 class="fw-bold mb-2" style="color: var(--dark-slate);">Luxury Environment</h5>
+                            <p class="text-muted small mb-0">Premium accommodation arrangements curated perfectly to support premium peaceful mental transitions.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6" data-animate="animate__fadeInUp" style="animation-delay: 0.6s;">
+                        <div class="pillar-card p-4 border-0 shadow-sm" style="background: var(--soft-sage); border-radius: 24px; transition: all 0.3s ease;">
+                            <div class="pillar-number mb-3" style="font-size: 2.5rem; font-weight: 800; color: rgba(13, 92, 81, 0.15);">04</div>
+                            <h5 class="fw-bold mb-2" style="color: var(--dark-slate);">Expert Clinicians</h5>
+                            <p class="text-muted small mb-0">Highly qualified psychiatrists and medical practitioners working 24/7 on recovery frameworks.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section><section class="journey-video-section py-5" style="background-color: #ffffff; padding: 100px 0 !important;">
+    <div class="container">
+        <div class="row align-items-center gy-5">
+            
+            <div class="col-lg-6" data-animate="animate__fadeInLeft">
+                <div class="video-wrapper position-relative p-2 shadow-lg" style="background: #ffffff; border-radius: 32px; border: 1px solid rgba(13, 92, 81, 0.08);">
+                    <div class="ratio ratio-16x9 overflow-hidden" style="border-radius: 24px;">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Sakoon Rehabilitation Overview" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6" data-animate="animate__fadeInRight">
+                <div class="ps-lg-4">
+                    <span class="section-tag" style="color: var(--secondary-color); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem; d-block; margin-bottom: 10px;">
+                        • The Process •
+                    </span>
+                    <h2 class="display-6 fw-bold mb-4" style="color: var(--dark-slate);">
+                        How We Guide Your <br><span style="color: var(--primary-color);">Path to Sobriety</span>
+                    </h2>
+
+                    <div class="process-flow d-flex flex-column gap-4 mt-4">
+                        
+                        <div class="d-flex gap-3 align-items-start">
+                            <div class="step-num-icon d-flex align-items-center justify-content-center flex-shrink-0" style="width: 45px; height: 45px; background: rgba(13, 92, 81, 0.1); color: var(--primary-color); border-radius: 50%; font-weight: 700;">
+                                1
+                            </div>
+                            <div>
+                                <h5 class="fw-bold text-dark mb-1">Clinical Evaluation</h5>
+                                <p class="text-muted small mb-0">Detailed psychiatric assessment to construct personalized recovery and balancing maps.</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-3 align-items-start">
+                            <div class="step-num-icon d-flex align-items-center justify-content-center flex-shrink-0" style="width: 45px; height: 45px; background: rgba(20, 184, 166, 0.1); color: var(--secondary-color); border-radius: 50%; font-weight: 700;">
+                                2
+                            </div>
+                            <div>
+                                <h5 class="fw-bold text-dark mb-1">Safe Medical Detox</h5>
+                                <p class="text-muted small mb-0">Monitored clean-up processes managing biological physical symptoms comfortably.</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-3 align-items-start">
+                            <div class="step-num-icon d-flex align-items-center justify-content-center flex-shrink-0" style="width: 45px; height: 45px; background: rgba(13, 92, 81, 0.1); color: var(--primary-color); border-radius: 50%; font-weight: 700;">
+                                3
+                            </div>
+                            <div>
+                                <h5 class="fw-bold text-dark mb-1">Cognitive Rehabilitation</h5>
+                                <p class="text-muted small mb-0">Interactive psychological standard group therapies resetting healthy core routines.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="testimonials-section py-5" style="background-color: var(--light-cream); padding: 100px 0 !important;">
+    <div class="container">
+        
+        <div class="row justify-content-center text-center mb-5">
+            <div class="col-lg-9" data-animate="animate__fadeIn">
+                <span class="section-tag" style="color: var(--primary-color); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem;">
+                    • Our Philosophy •
+                </span>
+                <h2 class="display-5 fw-bold mt-2 mb-3" style="color: var(--dark-slate);">More Than Just Treatment</h2>
+                
+                <div class="philosophy-text mx-auto mb-4" style="max-width: 800px; font-size: 1rem; color: var(--dark-slate); line-height: 1.8;">
+                    <p class="mb-3">
+                        Five years ago, Sakoon Rehabilitation didn't start as a business—it started as a necessity. We saw families tearing apart, promising youth fading away, and parents losing hope because of addiction. The existing centers felt like prisons, not places of healing.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="sakoonTestimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-animate="animate__fadeInUp">
+            <div class="carousel-inner mx-auto" style="max-width: 850px;">
+                
+                <div class="carousel-item active">
+                    <div class="testimonial-wrapper p-5 text-center shadow-sm position-relative" style="background: #ffffff; border-radius: 32px; border: 1px solid rgba(13, 92, 81, 0.05);">
+                        <div class="quote-icon mb-4" style="font-size: 3rem; color: rgba(20, 184, 166, 0.2); line-height: 1;">
+                            <i class="fa-solid fa-quote-left"></i>
+                        </div>
+                        <p class="fs-4 text-dark px-md-4 mb-4" style="line-height: 1.6; font-style: italic; font-weight: 600; color: var(--primary-color) !important;">
+                            "Recovery isn't just about stopping drugs; it's about creating a new life where it is easier to not use. We don't just detox the body; we rebuild the soul."
+                        </p>
+                        <div class="client-info-meta d-flex align-items-center justify-content-center gap-2">
+                            <div class="text-center">
+                                <h6 class="fw-bold text-dark mb-0">A Safe Haven for Recovery</h6>
+                                <small class="text-muted">Our Core Operational Mission</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="testimonial-wrapper p-5 text-center shadow-sm position-relative" style="background: #ffffff; border-radius: 32px; border: 1px solid rgba(13, 92, 81, 0.05);">
+                        <div class="quote-icon mb-4" style="font-size: 3rem; color: rgba(20, 184, 166, 0.2); line-height: 1;">
+                            <i class="fa-solid fa-quote-left"></i>
+                        </div>
+                        <p class="fs-5 text-secondary px-md-4 mb-4" style="line-height: 1.7; font-style: italic;">
+                            "The structured environment and professional psychiatric guidance at Sakoon gave me my life back. The path wasn't easy, but the medical tracking and support system made sobriety an achievable reality."
+                        </p>
+                        <div class="client-info-meta d-flex align-items-center justify-content-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&h=120&q=80" alt="Client Face" class="rounded-circle shadow-sm" style="width: 60px; height: 60px; object-fit: cover;">
+                            <div class="text-start">
+                                <h6 class="fw-bold text-dark mb-0">Ali Ahmed</h6>
+                                <small class="text-muted">Recovered Client (1 Year Clean)</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="testimonial-wrapper p-5 text-center shadow-sm position-relative" style="background: #ffffff; border-radius: 32px; border: 1px solid rgba(13, 92, 81, 0.05);">
+                        <div class="quote-icon mb-4" style="font-size: 3rem; color: rgba(20, 184, 166, 0.2); line-height: 1;">
+                            <i class="fa-solid fa-quote-left"></i>
+                        </div>
+                        <p class="fs-5 text-secondary px-md-4 mb-4" style="line-height: 1.7; font-style: italic;">
+                            "Family counseling sessions here completely reset our communication structures. We didn't just find medical setups; we found empathy, absolute privacy, and lifelong guidance assets."
+                        </p>
+                        <div class="client-info-meta d-flex align-items-center justify-content-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&h=120&q=80" alt="Client Face" class="rounded-circle shadow-sm" style="width: 60px; height: 60px; object-fit: cover;">
+                            <div class="text-start">
+                                <h6 class="fw-bold text-dark mb-0">Bilal Khan</h6>
+                                <small class="text-muted">Family Member Perspective</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="carousel-control-prev d-none d-md-flex align-items-center justify-content-center" type="button" data-bs-target="#sakoonTestimonialCarousel" data-bs-slide="prev" style="width: 50px; height: 50px; background: #ffffff; border: 1px solid rgba(13, 92, 81, 0.1); border-radius: 50%; color: var(--primary-color); top: 50%; transform: translateY(-50%); opacity: 1; left: 20px;">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button class="carousel-control-next d-none d-md-flex align-items-center justify-content-center" type="button" data-bs-target="#sakoonTestimonialCarousel" data-bs-slide="next" style="width: 50px; height: 50px; background: #ffffff; border: 1px solid rgba(13, 92, 81, 0.1); border-radius: 50%; color: var(--primary-color); top: 50%; transform: translateY(-50%); opacity: 1; right: 20px;">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            
+        </div>
+
+    </div>
+</section>
+<section class="modalities-section py-5" style="background-color: #fafcfb; padding: 100px 0 !important;">
+    <div class="container">
+        
+        <div class="row mb-5 text-center justify-content-center">
+            <div class="col-lg-7" data-animate="animate__fadeIn">
+                <span class="section-tag" style="color: var(--secondary-color); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem;">
+                    • Specialized Care •
+                </span>
+                <h2 class="display-6 fw-bold mt-2" style="color: var(--dark-slate);">Our Scientific Methodology</h2>
+                <p class="text-muted">Hum generic treatments par nahi, balki individual evaluation ke mutabik customized recovery frameworks par kaam karte hain.</p>
+            </div>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            
+            <div class="col-lg-4 col-md-6" data-animate="animate__fadeInUp">
+                <div class="modality-box p-4 text-center shadow-sm h-100" style="background: #ffffff; border-radius: 28px; border: 1px solid rgba(13, 92, 81, 0.04); transition: all 0.3s ease;">
+                    <div class="modality-icon-circle mx-auto mb-4 d-flex align-items-center justify-content-center" style="width: 70px; height: 70px; background: var(--soft-sage); color: var(--primary-color); border-radius: 50%; font-size: 1.5rem;">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <h5 class="fw-bold mb-2" style="color: var(--dark-slate);">CBT & Psychotherapy</h5>
+                    <p class="text-muted small mb-3">Cognitive Behavioral Therapy ke zariye patients ke behavioral patterns ko reset aur manage kiya jata hai.</p>
+                    <div class="pt-2 border-top" style="border-color: rgba(13, 92, 81, 0.05) !important;">
+                        <span class="badge rounded-pill px-3 py-2" style="background: var(--soft-sage); color: var(--primary-color); font-weight: 600; font-size: 0.75rem;">Compassionate Care</span>
+                        <p class="text-muted mt-2 mb-0" style="font-size: 0.8rem;">Treating every patient with respect, love, and professional medical attention.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6" data-animate="animate__fadeInUp" style="animation-delay: 0.2s;">
+                <div class="modality-box p-4 text-center shadow-sm h-100" style="background: #ffffff; border-radius: 28px; border: 1px solid rgba(13, 92, 81, 0.04); transition: all 0.3s ease;">
+                    <div class="modality-icon-circle mx-auto mb-4 d-flex align-items-center justify-content-center" style="width: 70px; height: 70px; background: rgba(20, 184, 166, 0.08); color: var(--secondary-color); border-radius: 50%; font-size: 1.5rem;">
+                        <i class="fa-solid fa-notes-medical"></i>
+                    </div>
+                    <h5 class="fw-bold mb-2" style="color: var(--dark-slate);">Relapse Prevention</h5>
+                    <p class="text-muted small mb-3">Discharge ke baad ke safar ke liye specialized toolkits aur strategies di jaati hain taaki lifestyle stable rahe.</p>
+                    <div class="pt-2 border-top" style="border-color: rgba(13, 92, 81, 0.05) !important;">
+                        <span class="badge rounded-pill px-3 py-2" style="background: rgba(20, 184, 166, 0.08); color: var(--secondary-color); font-weight: 600; font-size: 0.75rem;">Lifelong Support</span>
+                        <p class="text-muted mt-2 mb-0" style="font-size: 0.8rem;">We don't leave you after discharge; our aftercare ensures you stay on track.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6" data-animate="animate__fadeInUp" style="animation-delay: 0.4s;">
+                <div class="modality-box p-4 text-center shadow-sm h-100" style="background: #ffffff; border-radius: 28px; border: 1px solid rgba(13, 92, 81, 0.04); transition: all 0.3s ease;">
+                    <div class="modality-icon-circle mx-auto mb-4 d-flex align-items-center justify-content-center" style="width: 70px; height: 70px; background: var(--soft-sage); color: var(--primary-color); border-radius: 50%; font-size: 1.5rem;">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <h5 class="fw-bold mb-2" style="color: var(--dark-slate);">Holistic Wellness</h5>
+                    <p class="text-muted small mb-3">Physical training, mental wellness, meditation, aur high-nutrient nutrition setups ka complete fusion.</p>
+                    <div class="pt-2 border-top" style="border-color: rgba(13, 92, 81, 0.05) !important;">
+                        <span class="badge rounded-pill px-3 py-2" style="background: var(--soft-sage); color: var(--primary-color); font-weight: 600; font-size: 0.75rem;">Holistic Healing</span>
+                        <p class="text-muted mt-2 mb-0" style="font-size: 0.8rem;">Focusing on physical detox, mental health, and spiritual growth together.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section><section class="accreditation-section py-5" style="background-color: #ffffff; padding: 100px 0 !important;">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            
+            <div class="col-lg-6" data-animate="animate__fadeInLeft">
+                <div class="row g-3">
+                    <div class="col-6">
+                        <div class="brand-card p-4 text-center shadow-sm" style="background: var(--soft-sage); border-radius: 24px; min-height: 160px; d-flex; align-items: center; justify-content: center;">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=150&h=80&q=80" alt="Certified Logo 1" class="img-fluid grayscale-img" style="max-height: 60px; object-fit: contain; filter: grayscale(1) opacity(0.7);">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="brand-card p-4 text-center shadow-sm" style="background: #ffffff; border: 1px solid rgba(13, 92, 81, 0.06); border-radius: 24px; min-height: 160px; d-flex; align-items: center; justify-content: center; margin-top: 20px;">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=150&h=80&q=80" alt="Certified Logo 2" class="img-fluid grayscale-img" style="max-height: 60px; object-fit: contain; filter: grayscale(1) opacity(0.7);">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="brand-card p-4 text-center shadow-sm" style="background: #ffffff; border: 1px solid rgba(13, 92, 81, 0.06); border-radius: 24px; min-height: 160px; d-flex; align-items: center; justify-content: center; margin-top: -20px;">
+                            <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=150&h=80&q=80" alt="Certified Logo 3" class="img-fluid grayscale-img" style="max-height: 60px; object-fit: contain; filter: grayscale(1) opacity(0.7);">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="brand-card p-4 text-center shadow-sm" style="background: var(--soft-sage); border-radius: 24px; min-height: 160px; d-flex; align-items: center; justify-content: center;">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=150&h=80&q=80" alt="Certified Logo 4" class="img-fluid grayscale-img" style="max-height: 60px; object-fit: contain; filter: grayscale(1) opacity(0.7);">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6" data-animate="animate__fadeInRight">
+                <div class="ps-lg-4">
+                    <span class="section-tag" style="color: var(--secondary-color); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem;">
+                        • Trusted Standards •
+                    </span>
+                    <h2 class="display-6 fw-bold mt-2 mb-4" style="color: var(--dark-slate);">
+                        Recognized Healthcare & <br><span style="color: var(--primary-color);">Clinical Standards</span>
+                    </h2>
+                    <p class="text-muted mb-4">
+                        Sakoon Rehabilitation Center healthcare, management, aur psychological services ke tamam high-end rules aur protocols ko follow karta hai taaki aapko safe aur premium environment mil sake.
+                    </p>
+                    
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <h6 class="fw-bold text-dark mb-2"><i class="fa-solid fa-circle-check me-2" style="color: var(--primary-color);"></i> Government Certified</h6>
+                            <p class="text-muted small">Tamam healthcare and security authorities se completely certified model.</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <h6 class="fw-bold text-dark mb-2"><i class="fa-solid fa-circle-check me-2" style="color: var(--primary-color);"></i> Certified Psychologists</h6>
+                            <p class="text-muted small">Tamam core operational staff professional clinical experience holder hai.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section><section class="ceo-message-section py-5" style="background-color: #ffffff; padding: 120px 0 !important;">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            
+            <div class="col-lg-7" data-animate="animate__fadeInLeft">
+                <span class="section-tag" style="color: var(--secondary-color); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem; display: block; margin-bottom: 12px;">
+                    • Leadership •
+                </span>
+                <h2 class="display-5 fw-bold mb-4" style="color: var(--dark-slate); line-height: 1.2;">
+                    A Message from <br><span style="color: var(--primary-color);">Our CEO</span>
+                </h2>
+                
+                <div class="quote-container p-4 mb-4 position-relative" style="background: var(--soft-sage); border-radius: 24px; border-left: 5px solid var(--primary-color);">
+                    <div class="quote-mark position-absolute" style="top: 15px; left: 20px; font-size: 3rem; color: rgba(13, 92, 81, 0.08); font-family: serif; line-height: 0;">“</div>
+                    <p class="fs-6 text-dark mb-0 ps-3 style="line-height: 1.8; font-style: italic; font-weight: 500;">
+                        "At Sakoon Rehabilitation, we believe that recovery is not just about stopping an addiction; it's about building a new life. Our mission is to provide a safe, compassionate, and scientifically backed environment where individuals can heal mentally, physically, and emotionally. We are here to guide you from darkness into light."
+                    </p>
+                </div>
+
+                <div class="ceo-meta ps-2">
+                    <h4 class="fw-bold text-dark mb-1" style="letter-spacing: -0.5px;">Mr. Muhammad Imran</h4>
+                    <p class="text-muted small mb-3" style="font-weight: 600; color: var(--secondary-color) !important;">CEO & Clinical Psychologist</p>
+                    
+                    <a href="#" class="btn btn-sm px-3 py-2 d-inline-flex align-items-center gap-2 shadow-sm" style="background: #ffffff; border: 1px solid rgba(13, 92, 81, 0.15); border-radius: 12px; color: var(--dark-slate); font-weight: 600; font-size: 0.85rem; transition: all 0.2s ease;">
+                        <i class="fa-brands fa-linkedin" style="color: #0077b5; font-size: 1.1rem;"></i> Connect on LinkedIn
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-5" data-animate="animate__fadeInRight">
+                <div class="ceo-image-wrapper position-relative mx-auto" style="max-width: 400px;">
+                    <div class="geo-frame position-absolute" style="top: 20px; right: -20px; width: 100%; height: 100%; border: 2px solid var(--secondary-color); border-radius: 32px; z-index: 1;"></div>
+                    
+                    <div class="main-image-box position-relative overflow-hidden shadow-lg shadow-cl" style="border-radius: 32px; z-index: 2; background: #ffffff; border: 6px solid #ffffff;">
+                        <img src="./images/ceoooo-removebg-preview.png" alt="Mr. Muhammad Imran - CEO" class="img-fluid w-100 d-block" style="object-fit: cover; height: 460px;">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<footer class="main-footer position-relative pt-5 pb-3 text-white" style="background: linear-gradient(135deg, #072a25 0%, #0d5c51 100%); font-family: 'Poppins', sans-serif; overflow: hidden; border-top: 5px solid var(--secondary-color);">
+    
+    <div class="position-absolute top-0 start-50 translate-middle-x" style="width: 80%; height: 1px; background: linear-gradient(90deg, transparent, rgba(20, 184, 166, 0.4), transparent);"></div>
+
+    <div class="container pt-4">
+        <div class="row g-5">
+            
+            <div class="col-xl-4 col-lg-4 col-md-12">
+                <div class="footer-brand-info pe-xl-4">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="footer-logo-svg p-2 bg-white rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 68px; height: 68px;">
+            <img src="./images/logo (2).png" alt="Sakoon Logo" style="height: 80px; width: auto;">
+                        </div>
+                        <h4 class="fw-bold m-0 tracking-tight" style="font-size: 1.35rem; letter-spacing: -0.5px;">Sakoon <span style="color: var(--secondary-color);">Rehabilitation</span></h4>
+                    </div>
+                    <p class="text-white-50 small mb-4" style="line-height: 1.7; font-size: 0.88rem;">
+                        Sakoon Rehabilitation Center is dedicated to providing compassionate care for addiction recovery and mental health, helping individuals rebuild their lives with dignity and hope.
+                    </p>
+                    <div class="social-links-wrapper d-flex gap-2">
+                        <a href="#" class="social-btn d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.06); color: #fff; transition: all 0.3s ease; text-decoration: none;"><i class="fab fa-facebook-f text-white-50"></i></a>
+                        <a href="#" class="social-btn d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.06); color: #fff; transition: all 0.3s ease; text-decoration: none;"><i class="fab fa-instagram text-white-50"></i></a>
+                        <a href="#" class="social-btn d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.06); color: #fff; transition: all 0.3s ease; text-decoration: none;"><i class="fab fa-tiktok text-white-50"></i></a>
+                        <a href="#" class="social-btn d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.06); color: #fff; transition: all 0.3s ease; text-decoration: none;"><i class="fab fa-linkedin-in text-white-50"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6">
+                <div class="ps-xl-3">
+                    <h6 class="fw-bold text-uppercase tracking-wider mb-4 position-relative pb-2" style="font-size: 0.8rem; color: var(--secondary-color); letter-spacing: 1px;">
+                        Quick Links
+                        <span class="position-absolute bottom-0 start-0" style="width: 25px; height: 2px; background: var(--secondary-color);"></span>
+                    </h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2 mb-0 footer-nav-list">
+                        <li><a href="index.html" class="text-white-50 small text-decoration-none transition-link" style="font-size: 0.88rem;"><i class="fa-solid fa-angle-right me-2 opacity-50" style="font-size: 0.7rem;"></i>Home</a></li>
+                        <li><a href="about.html" class="text-white-50 small text-decoration-none transition-link" style="font-size: 0.88rem;"><i class="fa-solid fa-angle-right me-2 opacity-50" style="font-size: 0.7rem;"></i>About Us</a></li>
+                        <li><a href="services.html" class="text-white-50 small text-decoration-none transition-link" style="font-size: 0.88rem;"><i class="fa-solid fa-angle-right me-2 opacity-50" style="font-size: 0.7rem;"></i>Services</a></li>
+                        <li><a href="team.html" class="text-white-50 small text-decoration-none transition-link" style="font-size: 0.88rem;"><i class="fa-solid fa-angle-right me-2 opacity-50" style="font-size: 0.7rem;"></i>Our Team</a></li>
+                        <!-- <li><a href="#" class="text-white-50 small text-decoration-none transition-link" style="font-size: 0.88rem;"><i class="fa-solid fa-angle-right me-2 opacity-50" style="font-size: 0.7rem;"></i>Contact</a></li> -->
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                <h6 class="fw-bold text-uppercase tracking-wider mb-4 position-relative pb-2" style="font-size: 0.8rem; color: var(--secondary-color); letter-spacing: 1px;">
+                    Contact Us
+                    <span class="position-absolute bottom-0 start-0" style="width: 25px; height: 2px; background: var(--secondary-color);"></span>
+                </h6>
+                <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+                    <li class="d-flex align-items-start gap-3">
+                        <div class="contact-icon-box text-center rounded" style="width: 32px; height: 32px; background: rgba(255,255,255,0.05); flex-shrink: 0; padding-top: 4px;">
+                            <i class="fa-solid fa-phone" style="font-size: 0.85rem; color: var(--secondary-color);"></i>
+                        </div>
+                        <div>
+                            <a href="tel:+923099846835" class="text-white-50 small text-decoration-none d-block mb-1" style="font-size: 0.88rem; transition: color 0.2s ease;">+92 309 9846835</a>
+                            <a href="tel:+923042403452" class="text-white-50 small text-decoration-none d-block" style="font-size: 0.88rem; transition: color 0.2s ease;">+92 304 2403452</a>
+                        </div>
+                    </li>
+                    <li class="d-flex align-items-center gap-3">
+                        <div class="contact-icon-box text-center rounded" style="width: 32px; height: 32px; background: rgba(255,255,255,0.05); flex-shrink: 0; padding-top: 4px;">
+                            <i class="fa-solid fa-envelope" style="font-size: 0.85rem; color: var(--secondary-color);"></i>
+                        </div>
+                        <a href="mailto:sakoonrehab@gmail.com" class="text-white-50 small text-decoration-none" style="font-size: 0.88rem; transition: color 0.2s ease;">sakoonrehab@gmail.com</a>
+                    </li>
+                    <li class="d-flex align-items-start gap-3">
+                        <div class="contact-icon-box text-center rounded" style="width: 32px; height: 32px; background: rgba(255,255,255,0.05); flex-shrink: 0; padding-top: 4px;">
+                            <i class="fa-solid fa-location-dot" style="font-size: 0.85rem; color: var(--secondary-color);"></i>
+                        </div>
+                        <p class="text-white-50 small mb-0" style="font-size: 0.88rem; line-height: 1.5;">
+                            New Multan Colony, Services Road, House # 26-X, Near Shah Rukn-E-Alam Metro Station, Multan.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12">
+                <h6 class="fw-bold text-uppercase tracking-wider mb-4 position-relative pb-2" style="font-size: 0.8rem; color: var(--secondary-color); letter-spacing: 1px;">
+                    Find Us
+                    <span class="position-absolute bottom-0 start-0" style="width: 25px; height: 2px; background: var(--secondary-color);"></span>
+                </h6>
+                <div class="map-container-wrapper p-1 bg-white shadow-sm position-relative overflow-hidden" style="border-radius: 16px; border: 1px solid rgba(255,255,255,0.15); height: 160px;">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3448.24330104533!2d71.4925!3d30.2011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDEyJzA0LjAiTiA3McKwMjknMzMuMCJF!5e0!3m2!1sen!2spk!4v1700000000000!5m2!1sen!2spk" class="w-100 h-100 border-0 d-block rounded" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="filter: grayscale(0.2) contrast(1.1);"></iframe>
+                </div>
+            </div>
+
+        </div>
+
+        <hr class="mt-5 mb-4" style="border-color: rgba(255, 255, 255, 0.08) !important;">
+
+        <div class="row align-items-center g-3">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="text-white-50 small mb-0" style="font-size: 0.82rem;">&copy; 2026 Sakoon Rehabilitation. All Rights Reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <p class="text-white-50 small mb-0" style="font-size: 0.82rem;">Designed by <a href="#" class="text-decoration-none fw-semibold" style="color: var(--secondary-color); transition: color 0.2s ease;">CodedClouds</a></p>
+            </div>
+        </div>
+
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('[data-animate]');
+
+            const observerOptions = {
+                root: null, // پورٹ ویو کے مطابق کام کرے گا
+                rootMargin: '0px',
+                threshold: 0.15 // جب کارڈ 15% نظر آئے گا، تب اینیمیشن چلے گی
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        const animationClass = element.getAttribute('data-animate');
+                        
+                        // اینیمیشن کلاسز اپلائی کریں
+                        element.style.visibility = 'visible';
+                        element.classList.add('animate__animated', animationClass);
+                        
+                        // جب ایک بار اینیمیشن چل جائے، تو ٹریک کرنا بند کر دیں
+                        observer.unobserve(element);
+                    }
+                });
+            }, observerOptions);
+
+            animatedElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html> 

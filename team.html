@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakoon Rehabilitation | Dynamic Premium Experience</title>
+    <link rel="icon" type="image/png" href="./images/logo (2).png">
+    <link rel="shortcut icon" type="image/png" href="./images/logo (2).png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <style>
+        :root {
+            --primary-color: #0d5c51;
+            --secondary-color: #14b8a6;
+            --dark-slate: #0f172a;
+            --light-cream: #f7faf9;
+            --soft-sage: #eef7f5;
+            --card-gradient-1: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 250, 248, 0.9) 100%);
+            --card-gradient-2: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(230, 244, 241, 0.95) 100%);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+            background-color: var(--light-cream);
+            overflow-x: hidden;
+        }
+
+        /* --- NAVBAR STYLING --- */
+        .navbar {
+            background: rgba(255, 255, 255, 0.85) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(13, 92, 81, 0.06);
+        }
+
+        .btn-custom {
+            background: linear-gradient(135deg, var(--primary-color), #09443c);
+            color: white;
+            border-radius: 12px;
+            padding: 12px 28px;
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(13, 92, 81, 0.2);
+        }
+
+        /* --- SECTION 1: HERO GRID LAYOUT --- */
+        .hero-section {
+            padding-top: 160px;
+            padding-bottom: 100px;
+            background: radial-gradient(circle at 90% 10%, rgba(20, 184, 166, 0.08), transparent 45%);
+        }
+
+        .hero-title {
+            font-size: 3.8rem;
+            font-weight: 800;
+            color: var(--dark-slate);
+            line-height: 1.15;
+        }
+
+        .hero-title span {
+            color: var(--primary-color);
+        }
+
+        .grid-display {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .feature-box {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 25px;
+            box-shadow: 0 15px 35px rgba(15, 23, 42, 0.02);
+            border: 1px solid rgba(13, 92, 81, 0.03);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        /* Floating Movement Classes */
+        .float-up { animation: waveUp 6s infinite ease-in-out; }
+        .float-down { animation: waveDown 6s infinite ease-in-out; }
+
+        @keyframes waveUp {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        @keyframes waveDown {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(12px); }
+        }
+
+        .feature-box:hover {
+            transform: scale(1.03) translateY(-5px) !important;
+            box-shadow: 0 25px 50px rgba(13, 92, 81, 0.08);
+            border-color: rgba(20, 184, 166, 0.2);
+        }
+
+        .icon-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            background: rgba(20, 184, 166, 0.1);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        /* --- SECTION 2: DANGER BENTO SECTION --- */
+        .danger-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, var(--light-cream) 0%, var(--soft-sage) 100%);
+            color: var(--dark-slate);
+            border-radius: 50px 50px 0 0;
+            position: relative;
+            border-top: 1px solid rgba(13, 92, 81, 0.05);
+        }
+
+        .section-tag {
+            color: var(--primary-color);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        /* Bento Grid Layout Configuration */
+        .bento-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 25px;
+            margin-top: 50px;
+        }
+
+        .bento-card {
+            position: relative;
+            background: var(--card-gradient-1);
+            border-radius: 28px;
+            min-height: 260px;
+            overflow: hidden;
+            border: 1px solid rgba(13, 92, 81, 0.06);
+            box-shadow: 0 10px 30px rgba(13, 92, 81, 0.02);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 35px;
+        }
+
+        /* Image Masking Layer - Fixed Visibility */
+        .bento-img-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.4;
+            mix-blend-mode: multiply;
+            transition: all 0.6s ease;
+            z-index: 1;
+        }
+
+        /* Spanning grid modifications for asymmetry */
+        .span-2 { grid-column: span 2; }
+        .row-2 { grid-row: span 2; }
+
+        .bento-content {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 16px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Interactive Dynamic Animations on Hover */
+        .bento-card:hover {
+            transform: scale(1.02) translateY(-8px);
+            background: var(--card-gradient-2);
+            border-color: rgba(20, 184, 166, 0.3);
+            box-shadow: 0 25px 55px rgba(13, 92, 81, 0.08);
+        }
+
+        .bento-card:hover .bento-img-bg {
+            opacity: 0.6;
+            transform: scale(1.08) rotate(1deg);
+        }
+
+        .badge-danger-soft {
+            background-color: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+            font-weight: 700;
+            border: 1px solid rgba(220, 53, 69, 0.2);
+        }
+
+        /* Dynamic icon transition effect inside cards */
+        .bento-arrow-icon {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            z-index: 2;
+            transition: all 0.4s ease;
+        }
+
+        .bento-card:hover .bento-arrow-icon {
+            background: var(--primary-color);
+            color: #ffffff;
+            transform: rotate(45deg);
+        }
+
+        /* --- SCROLL ANIMATION CONFIG --- */
+        [data-animate] {
+            opacity: 0;
+            visibility: hidden;
+            will-change: transform, opacity;
+        }
+
+        /* --- RESPONSIVE FIXES --- */
+        @media (max-width: 991px) {
+            .hero-title { font-size: 2.8rem; text-align: center; }
+            .hero-section p { text-align: center; }
+            .hero-section .d-flex { justify-content: center; }
+            .grid-display { grid-template-columns: 1fr; }
+            .float-up, .float-down { animation: none; }
+            .bento-container { grid-template-columns: 1fr; }
+            .span-2, .row-2 { grid-column: span 1; grid-row: span 1; }
+            .danger-section { padding: 60px 0; border-radius: 30px 30px 0 0; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-0 shadow-sm animate__animated animate__fadeInDown" style="height: 80px;"> <div class="container position-relative d-flex align-items-center" style="height: 100%;">
+        
+        <a class="navbar-brand py-0 position-absolute" href="#" style="top: 50%; transform: translateY(-50%); z-index: 1030;">
+            <img src="./images/logo (2).png" alt="Sakoon Logo" style="height: 120px; width: auto;">
+        </a>
+        
+        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav align-items-center gap-2 py-2">
+                <li class="nav-item"><a class="nav-link fw-semibold px-3" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link fw-semibold px-3" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link fw-semibold px-3" href="services.html">Services</a></li>
+                <li class="nav-item"><a class="nav-link fw-semibold px-3" href="team.html">Team</a></li>
+                <li class="nav-item"><a class="btn btn-custom ms-lg-2" href="book.html">Book Appointment</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<section class="about-hero-section text-center text-white d-flex align-items-center justify-content-center position-relative" style="background: linear-gradient(rgba(7, 42, 37, 0.9), rgba(13, 92, 81, 0.95)), url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1920&q=80') no-repeat center center; background-size: cover; padding: 120px 0 100px 0; border-bottom: 6px solid #14b8a6;">
+    <div class="container" data-animate="animate__fadeInUp">
+        <span class="badge rounded-pill px-3 py-2 mb-3" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #14b8a6; font-weight: 600; letter-spacing: 2px; font-size: 0.85rem;">OUR EXPERTS</span>
+        <h1 class="display-3 fw-bold mb-3 text-white" style="font-family: 'Poppins', sans-serif;">Meet Our Team</h1>
+        <p class="fs-5 text-white-50 mx-auto" style="max-width: 600px; font-size: 1.1rem; line-height: 1.6;">Dedicated specialists, psychiatrists, and empathetic counselors working together to guide you towards a healthier, happier life.</p>
+    </div>
+</section>
+<section style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; padding: 80px 20px; color: #1e293b; overflow: hidden;">
+    
+    <style>
+        /* Initial State before scroll reveals it */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        
+        /* Active State triggered by JS */
+        .scroll-reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Team Card Custom Hover Effects */
+        .team-card {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease !important;
+        }
+        .team-card:hover {
+            transform: translateY(-10px) !important;
+            box-shadow: 0 22px 40px rgba(15, 23, 42, 0.08) !important;
+            border-color: #0d9488 !important;
+        }
+        .team-card:hover .avatar-glow {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(13, 148, 136, 0.25) !important;
+        }
+    </style>
+
+    <div style="max-width: 1200px; margin: 0 auto; background: #ffffff; padding: 50px 40px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid #f1f5f9;">
+        
+        <div class="scroll-reveal" style="margin-bottom: 50px; text-align: center;">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 12px;">
+                <span style="width: 8px; height: 8px; background-color: #b45309; border-radius: 50%; display: inline-block;"></span>
+                <span style="text-transform: uppercase; font-size: 14px; font-weight: 700; letter-spacing: 1.5px; color: #0f172a;">EXPERTS BEHIND SUKOON</span>
+            </div>
+            <h2 style="font-size: 38px; font-weight: 700; color: #0f172a; margin: 0; padding-bottom: 15px;">
+                Meet Our Specialists
+            </h2>
+            <span style="display: block; width: 60px; height: 4px; background: linear-gradient(90deg, #115e59, #b45309); margin: 15px auto 0 auto; border-radius: 2px;"></span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+            
+            <div class="team-card scroll-reveal" style="background: #ffffff; border: 1px solid #f1f5f9; border-radius: 20px; padding: 40px 30px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.02); display: flex; flex-direction: column; align-items: center; transition: all 0.4s ease;">
+                <div class="avatar-glow" style="width: 110px; height: 110px; background-color: #f1f5f9; background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=200&h=200&q=80'); background-size: cover; border-radius: 50%; margin-bottom: 24px; border: 3px solid #14b8a6; transition: all 0.4s ease;"></div>
+                <h3 style="font-size: 20px; font-weight: 700; color: #0f172a; margin: 0 0 6px 0;">Dr. Arsalan Khan</h3>
+                <p style="font-size: 14px; color: #0d9488; font-weight: 600; margin: 0 0 14px 0; text-transform: uppercase; letter-spacing: 0.5px;">Chief Psychiatrist</p>
+                <p style="font-size: 14px; color: #64748b; margin: 0; line-height: 1.6;">12+ years of experience in clinical psychology and advanced addiction therapies.</p>
+            </div>
+
+            <div class="team-card scroll-reveal" style="background: #ffffff; border: 1px solid #f1f5f9; border-radius: 20px; padding: 40px 30px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.02); display: flex; flex-direction: column; align-items: center; transition: all 0.4s ease;">
+                <div class="avatar-glow" style="width: 110px; height: 110px; background-color: #f1f5f9; background-image: url('https://images.unsplash.com/photo-1594824813573-246434de83fb?auto=format&fit=crop&w=200&h=200&q=80'); background-size: cover; border-radius: 50%; margin-bottom: 24px; border: 3px solid #14b8a6; transition: all 0.4s ease;"></div>
+                <h3 style="font-size: 20px; font-weight: 700; color: #0f172a; margin: 0 0 6px 0;">Sarah Ahmed</h3>
+                <p style="font-size: 14px; color: #0d9488; font-weight: 600; margin: 0 0 14px 0; text-transform: uppercase; letter-spacing: 0.5px;">Family Counselor</p>
+                <p style="font-size: 14px; color: #64748b; margin: 0; line-height: 1.6;">Specialized in relationship healing, family integration, and trauma recovery protocols.</p>
+            </div>
+
+            <div class="team-card scroll-reveal" style="background: #ffffff; border: 1px solid #f1f5f9; border-radius: 20px; padding: 40px 30px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.02); display: flex; flex-direction: column; align-items: center; transition: all 0.4s ease;">
+                <div class="avatar-glow" style="width: 110px; height: 110px; background-color: #f1f5f9; background-image: url('https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=200&h=200&q=80'); background-size: cover; border-radius: 50%; margin-bottom: 24px; border: 3px solid #14b8a6; transition: all 0.4s ease;"></div>
+                <h3 style="font-size: 20px; font-weight: 700; color: #0f172a; margin: 0 0 6px 0;">Dr. Zain Malik</h3>
+                <p style="font-size: 14px; color: #0d9488; font-weight: 600; margin: 0 0 14px 0; text-transform: uppercase; letter-spacing: 0.5px;">Detox Specialist</p>
+                <p style="font-size: 14px; color: #64748b; margin: 0; line-height: 1.6;">Expert in managing ultra-safe medical detoxification and physical withdrawal stabilization.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 // Triggers when 15% of the element is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        // Stagger effect setup so cards slide up one by one
+                        setTimeout(() => {
+                            entry.target.classList.add('is-visible');
+                        }, index * 120); 
+                        observer.unobserve(entry.target); // Animates only once
+                    }
+                });
+            }, observerOptions);
+
+            // Target all reveal elements
+            const hiddenElements = document.querySelectorAll('.scroll-reveal');
+            hiddenElements.forEach((el) => observer.observe(el));
+        });
+    </script>
+</section>
+<footer class="main-footer position-relative pt-5 pb-3 text-white" style="background: linear-gradient(135deg, #072a25 0%, #0d5c51 100%); font-family: 'Poppins', sans-serif; overflow: hidden; border-top: 5px solid var(--secondary-color);">
+    
+    <div class="position-absolute top-0 start-50 translate-middle-x" style="width: 80%; height: 1px; background: linear-gradient(90deg, transparent, rgba(20, 184, 166, 0.4), transparent);"></div>
+
+    <div class="container pt-4">
+        <div class="row g-5">
+            
+            <div class="col-xl-4 col-lg-4 col-md-12">
+                <div class="footer-brand-info pe-xl-4">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="footer-logo-svg p-2 bg-white rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 68px; height: 68px;">
+            <img src="./images/logo (2).png" alt="Sakoon Logo" style="height: 80px; width: auto;">
+                        </div>
+                        <h4 class="fw-bold m-0 tracking-tight" style="font-size: 1.35rem; letter-spacing: -0.5px;">Sakoon <span style="color: var(--secondary-color);">Rehabilitation</span></h4>
+                    </div>
+                    <p class="text-white-50 small mb-4" style="line-height: 1.7; font-size: 0.88rem;">
+                        Sakoon Rehabilitation Center is dedicated to providing compassionate care for addiction recovery and mental health, helping individuals rebuild their lives with dignity and hope.
+                    </p>
+                    <div class="social-links-wrapper d-flex gap-2">
+                        <a href="#" class="social-btn d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.06); color: #fff; transition: all 0.3s ease; text-decoration: none;"><i class="fab fa-facebook-f text-white-50"></i></a>
+                        <a href="#" class="social-btn d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.06); color: #fff; transition: all 0.3s ease; text-decoration: none;"><i class="fab fa-instagram text-white-50"></i></a>
+                        <a href="#" class="social-btn d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.06); color: #fff; transition: all 0.3s ease; text-decoration: none;"><i class="fab fa-tiktok text-white-50"></i></a>
+                        <a href="#" class="social-btn d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.06); color: #fff; transition: all 0.3s ease; text-decoration: none;"><i class="fab fa-linkedin-in text-white-50"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6">
+                <div class="ps-xl-3">
+                    <h6 class="fw-bold text-uppercase tracking-wider mb-4 position-relative pb-2" style="font-size: 0.8rem; color: var(--secondary-color); letter-spacing: 1px;">
+                        Quick Links
+                        <span class="position-absolute bottom-0 start-0" style="width: 25px; height: 2px; background: var(--secondary-color);"></span>
+                    </h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2 mb-0 footer-nav-list">
+                        <li><a href="index.html" class="text-white-50 small text-decoration-none transition-link" style="font-size: 0.88rem;"><i class="fa-solid fa-angle-right me-2 opacity-50" style="font-size: 0.7rem;"></i>Home</a></li>
+                        <li><a href="about.html" class="text-white-50 small text-decoration-none transition-link" style="font-size: 0.88rem;"><i class="fa-solid fa-angle-right me-2 opacity-50" style="font-size: 0.7rem;"></i>About Us</a></li>
+                        <li><a href="services.html" class="text-white-50 small text-decoration-none transition-link" style="font-size: 0.88rem;"><i class="fa-solid fa-angle-right me-2 opacity-50" style="font-size: 0.7rem;"></i>Services</a></li>
+                        <li><a href="team.html" class="text-white-50 small text-decoration-none transition-link" style="font-size: 0.88rem;"><i class="fa-solid fa-angle-right me-2 opacity-50" style="font-size: 0.7rem;"></i>Our Team</a></li>
+                        <!-- <li><a href="#" class="text-white-50 small text-decoration-none transition-link" style="font-size: 0.88rem;"><i class="fa-solid fa-angle-right me-2 opacity-50" style="font-size: 0.7rem;"></i>Contact</a></li> -->
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                <h6 class="fw-bold text-uppercase tracking-wider mb-4 position-relative pb-2" style="font-size: 0.8rem; color: var(--secondary-color); letter-spacing: 1px;">
+                    Contact Us
+                    <span class="position-absolute bottom-0 start-0" style="width: 25px; height: 2px; background: var(--secondary-color);"></span>
+                </h6>
+                <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+                    <li class="d-flex align-items-start gap-3">
+                        <div class="contact-icon-box text-center rounded" style="width: 32px; height: 32px; background: rgba(255,255,255,0.05); flex-shrink: 0; padding-top: 4px;">
+                            <i class="fa-solid fa-phone" style="font-size: 0.85rem; color: var(--secondary-color);"></i>
+                        </div>
+                        <div>
+                            <a href="tel:+923099846835" class="text-white-50 small text-decoration-none d-block mb-1" style="font-size: 0.88rem; transition: color 0.2s ease;">+92 309 9846835</a>
+                            <a href="tel:+923042403452" class="text-white-50 small text-decoration-none d-block" style="font-size: 0.88rem; transition: color 0.2s ease;">+92 304 2403452</a>
+                        </div>
+                    </li>
+                    <li class="d-flex align-items-center gap-3">
+                        <div class="contact-icon-box text-center rounded" style="width: 32px; height: 32px; background: rgba(255,255,255,0.05); flex-shrink: 0; padding-top: 4px;">
+                            <i class="fa-solid fa-envelope" style="font-size: 0.85rem; color: var(--secondary-color);"></i>
+                        </div>
+                        <a href="mailto:sakoonrehab@gmail.com" class="text-white-50 small text-decoration-none" style="font-size: 0.88rem; transition: color 0.2s ease;">sakoonrehab@gmail.com</a>
+                    </li>
+                    <li class="d-flex align-items-start gap-3">
+                        <div class="contact-icon-box text-center rounded" style="width: 32px; height: 32px; background: rgba(255,255,255,0.05); flex-shrink: 0; padding-top: 4px;">
+                            <i class="fa-solid fa-location-dot" style="font-size: 0.85rem; color: var(--secondary-color);"></i>
+                        </div>
+                        <p class="text-white-50 small mb-0" style="font-size: 0.88rem; line-height: 1.5;">
+                            New Multan Colony, Services Road, House # 26-X, Near Shah Rukn-E-Alam Metro Station, Multan.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12">
+                <h6 class="fw-bold text-uppercase tracking-wider mb-4 position-relative pb-2" style="font-size: 0.8rem; color: var(--secondary-color); letter-spacing: 1px;">
+                    Find Us
+                    <span class="position-absolute bottom-0 start-0" style="width: 25px; height: 2px; background: var(--secondary-color);"></span>
+                </h6>
+                <div class="map-container-wrapper p-1 bg-white shadow-sm position-relative overflow-hidden" style="border-radius: 16px; border: 1px solid rgba(255,255,255,0.15); height: 160px;">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3448.24330104533!2d71.4925!3d30.2011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDEyJzA0LjAiTiA3McKwMjknMzMuMCJF!5e0!3m2!1sen!2spk!4v1700000000000!5m2!1sen!2spk" class="w-100 h-100 border-0 d-block rounded" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="filter: grayscale(0.2) contrast(1.1);"></iframe>
+                </div>
+            </div>
+
+        </div>
+
+        <hr class="mt-5 mb-4" style="border-color: rgba(255, 255, 255, 0.08) !important;">
+
+        <div class="row align-items-center g-3">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="text-white-50 small mb-0" style="font-size: 0.82rem;">&copy; 2026 Sakoon Rehabilitation. All Rights Reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <p class="text-white-50 small mb-0" style="font-size: 0.82rem;">Designed by <a href="#" class="text-decoration-none fw-semibold" style="color: var(--secondary-color); transition: color 0.2s ease;">CodedClouds</a></p>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('[data-animate]');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        const animationClass = element.getAttribute('data-animate');
+                        
+                        element.style.visibility = 'visible';
+                        element.classList.add('animate__animated', animationClass);
+                        
+                        observer.unobserve(element);
+                    }
+                });
+            }, observerOptions);
+
+            animatedElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body> 
